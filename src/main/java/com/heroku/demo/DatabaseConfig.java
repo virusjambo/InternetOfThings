@@ -16,17 +16,17 @@ public class DatabaseConfig {
 	@Autowired
 	public DataSource dataSource() {
 		try {
-				URI dbUri = new URI("postgres://ahfrbndexymzyd:RZH7D_e20MBegDzW0LVE04MEw8@ec2-54-225-194-162.compute-1.amazonaws.com:5432/d54rhig86urehd");
+				//URI dbUri = new URI("postgres://ahfrbndexymzyd:RZH7D_e20MBegDzW0LVE04MEw8@ec2-54-225-194-162.compute-1.amazonaws.com:5432/d54rhig86urehd");
 
 				
-			//	URI dbUri = new URI(System.getenv("DATABASE_URL"));
+				URI dbUri = new URI(System.getenv("DATABASE_URL"));
 			String username = dbUri.getUserInfo().split(":")[0];
 			String password = dbUri.getUserInfo().split(":")[1];
-			//String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+			String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 			
-			  String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' +
+			/*  String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' +
 			  dbUri.getPort() + dbUri.getPath()
-			 +"?sslmode=require&user="+username+"&password="+ password;
+			 +"?sslmode=require&user="+username+"&password="+ password;*/
 			
 			DriverManagerDataSource dataSource = new DriverManagerDataSource();
 			dataSource.setDriverClassName("org.postgresql.Driver");
