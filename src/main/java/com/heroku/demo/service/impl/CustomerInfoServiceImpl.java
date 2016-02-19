@@ -14,7 +14,7 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 
 	@Override
 	public User getUser(String user) {
-		return userRepository.findByUserName(user);
+		return userRepository.findByName(user);
 	}
 
 }

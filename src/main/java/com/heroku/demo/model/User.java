@@ -12,14 +12,14 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Entity
 @Table(name = "user_info", uniqueConstraints = {
-		@UniqueConstraint(name = "user_info_uk1", columnNames = { "user_name" }) })
+		@UniqueConstraint(name = "user_info_uk1", columnNames = { "name" }) })
 public class User {
 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private Long id;
-	@Column(name = "user_name", length = 25)
-	private String userName;
+	@Column(name = "name", length = 25)
+	private String name;
 	@Column(name = "password", length = 10)
 	private String password;
 	@Column(name = "active")
@@ -31,8 +31,8 @@ public class User {
 	 * @param password
 	 * @param active
 	 */
-	public User( String userName, String password, boolean active) {
-		this.userName = userName;
+	public User( String name, String password, boolean active) {
+		this.name = name;
 		this.password = password;
 		this.active = active;
 	}
@@ -43,11 +43,12 @@ public class User {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getUserName() {
-		return userName;
+	
+	public String getName() {
+		return name;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	@JsonIgnore
 	public String getPassword() {
