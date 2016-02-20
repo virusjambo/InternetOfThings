@@ -19,7 +19,7 @@ public class DeviceInfo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private Long id;
-	@Column(name = "mac_address", length = 25)
+	@Column(name = "mac_address")
 	private String macAddress;
 	@Column(name = "status",nullable=false)
 	@Enumerated(EnumType.STRING)

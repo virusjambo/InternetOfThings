@@ -41,9 +41,7 @@ public class DashBoardController {
 
 	@RequestMapping(value = "/getStatus", method = RequestMethod.GET)
 	public @ResponseBody DeviceInfo getStatus(@RequestParam String macAddress) {
-
 		return deviceService.getDeviceInfo(macAddress);
-
 	}
 
 	@RequestMapping(value = "/updateResponse", method = RequestMethod.POST)

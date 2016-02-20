@@ -30,8 +30,8 @@ public class DeviceStatusChangeDetails {
 	@Enumerated(EnumType.STRING)
 	private Status toStatus;
 
-	@Column(name = "device_response", length = 24)
-	private String deviceResponse;
+	@Column(name = "device_response")
+	private boolean deviceResponse;
 
 	@Column(name = "status", nullable = false)
 	@Enumerated(EnumType.STRING)
@@ -77,12 +77,14 @@ public class DeviceStatusChangeDetails {
 		this.status = status;
 	}
 
-	public String getDeviceResponse() {
+	public boolean isDeviceResponse() {
 		return deviceResponse;
 	}
 
-	public void setDeviceResponse(String deviceResponse) {
+	public void setDeviceResponse(boolean deviceResponse) {
 		this.deviceResponse = deviceResponse;
 	}
+
+	
 
 }

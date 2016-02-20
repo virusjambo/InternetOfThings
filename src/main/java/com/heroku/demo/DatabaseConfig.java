@@ -17,7 +17,7 @@ public class DatabaseConfig {
 	@Bean
 	public DataSource dataSource() {
 		try {
-				//URI dbUri = new URI("postgres://ahfrbndexymzyd:RZH7D_e20MBegDzW0LVE04MEw8@ec2-54-225-194-162.compute-1.amazonaws.com:5432/d54rhig86urehd");
+				//URI dbUri = new URI("postgres://zxlatqfyhhujyt:Lqmb_HuLOjoQon0vgJWyWHxChZ@ec2-54-83-198-111.compute-1.amazonaws.com:5432/d7li96963voj6v");
 
 				
 				URI dbUri = new URI(System.getenv("DATABASE_URL"));
@@ -25,7 +25,7 @@ public class DatabaseConfig {
 			String password = dbUri.getUserInfo().split(":")[1];
 			String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 			
-		/*  String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' +
+		/* String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' +
 			  dbUri.getPort() + dbUri.getPath()
 			 +"?sslmode=require&user="+username+"&password="+ password;*/
 			

@@ -32,7 +32,7 @@ public class DummyDataController {
 		deviceInfoRepository.save(new DeviceInfo("127.9.0.3", Status.OFF, "Fan 3", user.getId(), true));
 
 		User user1 = new User("Test1", "12345", true);
-		user1 = userRepository.save(user);
+		user1 = userRepository.save(user1);
 		deviceInfoRepository.save(new DeviceInfo("127.9.0.1", Status.OFF, "Fan", user1.getId(), true));
 		deviceInfoRepository.save(new DeviceInfo("127.9.0.2", Status.OFF, "Fan 1", user1.getId(), true));
 		deviceInfoRepository.save(new DeviceInfo("127.9.0.3", Status.OFF, "Fan 3", user1.getId(), true));
