@@ -1,7 +1,9 @@
 package com.heroku.demo.constants;
 
 public enum ErrorCode {
-	INVALID_USER("0001", "Invalid User Name or Password");
+	INVALID_USER("0001", "Invalid User Name or Password"),
+	INVALID_DEVICE("0002", "Device with this MAC doesn't exist");
+
 	/**
 	 * @param errorCode
 	 * @param errorMessage

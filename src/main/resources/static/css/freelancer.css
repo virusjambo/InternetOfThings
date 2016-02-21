@@ -1,8 +1,4 @@
-/*!
- * Start Bootstrap - Freelancer Bootstrap Theme (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
+
 
 body {
     overflow-x: hidden;
@@ -115,7 +111,7 @@ header .intro-text .skills {
     }
 
     header .intro-text .name {
-        font-size: 4.75em;
+        font-size: 2em;
     }
 
     header .intro-text .skills {
@@ -176,7 +172,7 @@ section {
 
 section h2 {
     margin: 0;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 section.success {

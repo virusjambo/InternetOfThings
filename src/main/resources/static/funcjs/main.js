@@ -109,7 +109,7 @@ var updatestatus = function(userid,device,state) {
 		data:JSON.stringify(deviceinfo),
 		success : function(res) {
 			if (res.success) {
-				alert(" update status success");
+				alert("Update status success");
 			} else {
 				alert("Unable to update status");
 			}

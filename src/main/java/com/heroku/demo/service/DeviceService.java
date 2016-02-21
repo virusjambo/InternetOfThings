@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.heroku.demo.constants.Status;
 import com.heroku.demo.model.DeviceInfo;
+import com.heroku.demo.model.DeviceStatusChangeDetails;
 import com.heroku.demo.output.ApiOutput;
 
 public interface DeviceService {
@@ -12,5 +13,10 @@ public interface DeviceService {
 	public DeviceInfo getDeviceInfo(String macAddreess);
 
 	public ApiOutput updateDeviceStatus(String macAddreess, Status status);
+	
+	public DeviceStatusChangeDetails getChangedStatus(String macAddreess);
+
+	public Boolean updateDeviceResponse(String response);
+
 
 }

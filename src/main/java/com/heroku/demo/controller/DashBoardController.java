@@ -1,7 +1,10 @@
 package com.heroku.demo.controller;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.heroku.demo.input.StatusChangeInput;
-import com.heroku.demo.model.DeviceInfo;
+import com.heroku.demo.model.DeviceStatusChangeDetails;
 import com.heroku.demo.output.ApiOutput;
 import com.heroku.demo.output.UserDeviceInfoOutput;
 import com.heroku.demo.service.CustomerInfoService;
@@ -34,20 +37,19 @@ public class DashBoardController {
 
 	@RequestMapping(value = "/changeStatus", method = RequestMethod.POST)
 	public @ResponseBody ApiOutput changeStatus(@RequestBody StatusChangeInput statusChangeInput) {
-
 		return deviceService.updateDeviceStatus(statusChangeInput.getMacAddress(), statusChangeInput.getToStatus());
 
 	}
 
-	@RequestMapping(value = "/getStatus", method = RequestMethod.GET)
-	public @ResponseBody DeviceInfo getStatus(@RequestParam String macAddress) {
-		return deviceService.getDeviceInfo(macAddress);
+	@RequestMapping(value = "/status", method = RequestMethod.GET)
+	public @ResponseBody DeviceStatusChangeDetails getStatus(@RequestParam String macAddress) {
+     	return deviceService.getChangedStatus(macAddress);
 	}
-
-	@RequestMapping(value = "/updateResponse", method = RequestMethod.POST)
-	public @ResponseBody DeviceInfo updateStatus(@RequestBody StatusChangeInput statusChangeInput) {
-
-		return null;
+	
+    // it should be in this format 1234,true
+	@RequestMapping(value = "/update/{response}", method = RequestMethod.POST)
+	public @ResponseBody boolean updateDeviceRespinse(@PathVariable("response") String response) {
+		return deviceService.updateDeviceResponse(response);
 
 	}
 }

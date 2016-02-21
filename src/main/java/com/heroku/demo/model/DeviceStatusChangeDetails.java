@@ -22,6 +22,12 @@ public class DeviceStatusChangeDetails {
 	@Column(name = "device_info_id")
 	private long deviceInfoId;
 
+	/**
+	 * 
+	 */
+	public DeviceStatusChangeDetails() {
+	}
+
 	@Column(name = "from_status", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Status fromStatus;
@@ -30,12 +36,23 @@ public class DeviceStatusChangeDetails {
 	@Enumerated(EnumType.STRING)
 	private Status toStatus;
 
-	@Column(name = "device_response")
-	private boolean deviceResponse;
-
 	@Column(name = "status", nullable = false)
 	@Enumerated(EnumType.STRING)
 	DeviceResponseStatus status = DeviceResponseStatus.PENDING;
+
+	/**
+	 * @param deviceInfoId
+	 * @param fromStatus
+	 * @param toStatus
+	 * @param status
+	 */
+	public DeviceStatusChangeDetails(long deviceInfoId, Status fromStatus, Status toStatus,
+			DeviceResponseStatus status) {
+		this.deviceInfoId = deviceInfoId;
+		this.fromStatus = fromStatus;
+		this.toStatus = toStatus;
+		this.status = status;
+	}
 
 	public Long getId() {
 		return id;
@@ -77,13 +94,7 @@ public class DeviceStatusChangeDetails {
 		this.status = status;
 	}
 
-	public boolean isDeviceResponse() {
-		return deviceResponse;
-	}
-
-	public void setDeviceResponse(boolean deviceResponse) {
-		this.deviceResponse = deviceResponse;
-	}
+	
 
 	
 
