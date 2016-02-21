@@ -35,7 +35,7 @@ public class DashBoardController {
 	@RequestMapping(value = "/changeStatus", method = RequestMethod.POST)
 	public @ResponseBody ApiOutput changeStatus(@RequestBody StatusChangeInput statusChangeInput) {
 
-		return null;
+		return deviceService.updateDeviceStatus(statusChangeInput.getMacAddress(), statusChangeInput.getToStatus());
 
 	}
 

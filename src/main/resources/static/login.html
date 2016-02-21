@@ -1,59 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="virusjambo@gmail.com">
-    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <link rel="shortcut icon" href="img/favicon.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Creative - Bootstrap 3 Responsive Admin Template">
+<meta name="author" content="virusjambo@gmail.com">
+<link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
+<title>Login</title>
 
-    <!-- Bootstrap CSS -->    
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- bootstrap theme -->
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
-    <!--external css-->
-    <!-- font icon -->
-    <link href="css/elegant-icons-style.css" rel="stylesheet" />
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <!-- Custom styles -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
+<!-- Bootstrap CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- bootstrap theme -->
+<link href="css/bootstrap-theme.css" rel="stylesheet">
+<!--external css-->
+<!-- font icon -->
+<link href="css/elegant-icons-style.css" rel="stylesheet" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+<!-- Custom styles -->
+<link href="css/style.css" rel="stylesheet">
+<link href="css/style-responsive.css" rel="stylesheet" />
+<script src="js/jquery-2.1.1.min.js"></script>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-    <!--[if lt IE 9]>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+<!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
 </head>
 
-  <body class="login-img3-body">
+<body class="login-img3-body">
 
-    <div class="container">
+	<div class="container">
 
-      <form class="login-form" action="index.html">        
-        <div class="login-wrap">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="icon_profile"></i></span>
-              <input type="text" class="form-control" placeholder="Username" autofocus>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <input type="password" class="form-control" placeholder="Password">
-            </div>
-            <label class="checkbox">
-                <input type="checkbox" value="remember-me"> Remember me
-                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
-            </label>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-            <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>
-        </div>
-      </form>
+		<form class="login-form" action="index.html">
+			<div class="login-wrap">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="icon_profile"></i></span>
+					<input type="text" class="form-control" id="username"
+						placeholder="Username" autofocus>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="icon_key_alt"></i></span>
+					<input type="password" id="password" class="form-control"
+						placeholder="Password">
+				</div>
+				<label class="checkbox"> <input type="checkbox"
+					value="remember-me"> Remember me <span class="pull-right">
+						<a href="#"> Forgot Password?</a>
+				</span>
+				</label>
+				<button id="login-button" class="btn btn-primary btn-lg btn-block"
+					type="button">Login</button>
+				<button class="btn btn-info btn-lg btn-block" type="button">Signup</button>
+			</div>
+		</form>
 
-    </div>
+	</div>
+	<script>
+$(document).ready(function(){
+	  $("#login-button").on("click", function(e){
+		  login();
+ 	});
+	  
+	  var login=function() {
+		  var loginInput = {};
+		  loginInput.username= $('#username').val();
+		  loginInput.password= $('#password').val();
 
+		  $.ajax({
+		  url:"/authlogin",
+		  type:"POST",
+		  data:JSON.stringify(loginInput),
+		  contentType:"application/json",
+		  dataType:"json",
+		  success: function(res){
+		   if(true == res.success) {
+			   window.location='dashboard.html?userId='+res.userId+'&userName='+ loginInput.username;
+		    }else{
+		    	  alert("Invalid user name or password");	
+		    }
+		  },
+		  failure:function(res){
+		    alert("failure");
+		  }
+		});
+	}  
+	  
+	  
 
-  </body>
+});
+
+</script>
+
+</body>
 </html>

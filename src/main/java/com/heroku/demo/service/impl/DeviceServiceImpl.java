@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.heroku.demo.constants.Status;
 import com.heroku.demo.model.DeviceInfo;
 import com.heroku.demo.model.User;
+import com.heroku.demo.output.ApiOutput;
 import com.heroku.demo.repository.DeviceInfoRepository;
 import com.heroku.demo.service.CustomerInfoService;
 import com.heroku.demo.service.DeviceService;
@@ -31,11 +32,11 @@ public class DeviceServiceImpl implements DeviceService {
 	}
 
 	@Override
-	public boolean updateDeviceStatus(String macAddress, Status status) {
+	public ApiOutput updateDeviceStatus(String macAddress, Status status) {
 		DeviceInfo deviceInfo= getDeviceInfo( macAddress);
 		deviceInfo.setStatus(status);
-		
-		return false;
+		deviceInfoRepository.save(deviceInfo);
+		return new ApiOutput();
 	}
 
 }
